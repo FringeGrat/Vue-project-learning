@@ -1,36 +1,49 @@
 <template>
-  <div class="login-backguound">
-   <div class="login-main">
-    <div class="login-container">
-     <h2>用户登录</h2>
-       <form @submit.prevent="onSubmit">
-      <div class="form-group">
-        <label for="username">用户名:</label>
-           <input
-            id="username"
-            v-model="username"
-            type="text"
-            placeholder="请输入用户名"
-            class="form-control"
-            />
+  <div>
+    <header class="navbar">
+      <div class="logo">一个糕手</div>
+      <nav>
+        <ul>
+          <li><router-link to="/">首页</router-link></li>
+          <li><router-link to="/products">商品</router-link></li>
+          <li><router-link to="/cart">购物车</router-link></li>
+          <li><router-link to="/orders">订单</router-link></li>
+          <li><router-link to="/login">登录</router-link></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="login-background">
+      <div class="login-main">
+        <div class="login-container">
+          <h2>用户登录</h2>
+          <form @submit.prevent="onSubmit">
+            <div class="form-group">
+              <label for="username">用户名:</label>
+              <input
+                id="username"
+                v-model="username"
+                type="text"
+                placeholder="请输入用户名"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="password">密码:</label>
+              <input
+                id="password"
+                v-model="password"
+                type="password"
+                placeholder="请输入密码"
+                class="form-control"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">登录</button>
+          </form>
+          <button @click="this.$router.push({ name: 'zc' });" class="btn btn-secondary">还没有账号，点击立即注册</button>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="password">密码:</label>
-        <input
-            id="password"
-            v-model="password"
-            type="password"
-            placeholder="请输入密码"
-            class="form-control"
-        />
-      </div>
-      <div></div>
-      <button type="submit" class="btn btn-primary">登录</button>
-    </form>
+    </div>
   </div>
-  </div>
-</div>
-  <button @click=" this.$router.push({ name: 'zc' });" class="btn btn-primary">还没有账号，点击立即注册</button>
 </template>
 
 <script>
@@ -61,75 +74,69 @@ export default {
       onSubmit,
     };
   },
-
 };
 </script>
 
 <style scoped>
-.login-backguound{
-  width: 100%;
-  height: auto;
-  background-image: url('../assets/images/mall-background.jpg');
-  background-size: cover; /* 背景图像尺寸设置为 cover */
-  background-position: center; 
-}
-.login-container {
-  width: 100%;
-  max-width: 350px;
-  margin: 100px auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-}
-
-.login-main {
-  height: 1000px;
-  background-image: url('../assets/images/mall-background.jpg'); /* 设置背景图像 */
-  background-size: cover; /* 背景图像尺寸设置为 cover */
-  background-position: center;   
-}
-
-h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-.form-group {
-  margin-bottom: 20px;
-}
-
-label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
-  color: #555;
-}
-
-.form-control {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-.btn {
+html, body {
   width: 100%;
-  padding: 10px;
-  background-color: #007BFF;
+  height: 100%;
+  overflow: hidden;
+}
+
+.navbar {
+  width: 100%;
+  height: 60px;
+  background: #333;
   color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
 
-.btn:hover {
-  background-color: #0056b3;
+.navbar ul {
+  list-style: none;
+  display: flex;
 }
 
-</style>
+.navbar ul li {
+  margin: 0 15px;
+}
+
+.navbar ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.login-background {
+  width: 100vw;
+  height: calc(100vh - 60px);
+  position: absolute;
+  top: 60px;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../assets/images/mall-background.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.login-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
