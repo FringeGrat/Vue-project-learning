@@ -32,6 +32,7 @@
 
     <footer id="contact">
       <p>联系我们: contact@desserts.com | 电话: 123-456-7890</p>
+      <p>联系我: contact@desserts.com | 电话: 123-456-7890</p>
     </footer>
   </div>
 </template>
